@@ -1,299 +1,674 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diego A. Santiago Rivera | Desarrollador web</title>
-<meta name="description" content="Desarrollador de aplicaciones web y estudiante de Sistemas de Información en Puerto Rico. Sistemas a la medida para pequeños negocios, con infraestructura propia.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --mist: #EEF2F0;
-    --ink: #1B2430;
-    --accent: #C23B26;
-    --palma: #2F6F5E;
-    --arena: #DCE4E0;
-    --muted: #55606B;
-    --display: "Bricolage Grotesque", system-ui, sans-serif;
-    --body: "Atkinson Hyperlegible", system-ui, sans-serif;
-    --wrap: 70rem;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; } }
-  body { margin: 0; background: var(--mist); color: var(--ink); font: 1.0625rem/1.6 var(--body); -webkit-font-smoothing: antialiased; }
-  a { color: inherit; }
-  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 1.5rem; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Diego A. Santiago Rivera | Desarrollador web</title>
+    <meta
+      name="description"
+      content="Desarrollador de aplicaciones web y estudiante de Sistemas de Información en Puerto Rico. Sistemas a la medida para pequeños negocios, con infraestructura propia."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --mist: #eef2f0;
+        --ink: #1b2430;
+        --accent: #c23b26;
+        --palma: #2f6f5e;
+        --arena: #dce4e0;
+        --muted: #55606b;
+        --display: "Bricolage Grotesque", system-ui, sans-serif;
+        --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+        --wrap: 70rem;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation: none !important;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--mist);
+        color: var(--ink);
+        font: 1.0625rem/1.6 var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .wrap {
+        max-width: var(--wrap);
+        margin: 0 auto;
+        padding-inline: 1.5rem;
+      }
 
-  .top { display: flex; justify-content: space-between; align-items: center; padding-block: 1.5rem; }
-  .top .mark { font: 800 1.1rem var(--display); text-decoration: none; letter-spacing: -0.02em; }
-  .top nav { display: flex; gap: 1.5rem; }
-  .top nav a { text-decoration: none; color: var(--muted); }
-  .top nav a:hover { color: var(--ink); }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 1.5rem;
+      }
+      .top .mark {
+        font: 800 1.1rem var(--display);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .top nav {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .top nav a {
+        text-decoration: none;
+        color: var(--muted);
+      }
+      .top nav a:hover {
+        color: var(--ink);
+      }
 
-  .hero { padding-block: 5rem 5.5rem; }
-  .hero h1 { font: 800 clamp(2.6rem, 7vw, 5.5rem)/0.98 var(--display); letter-spacing: -0.035em; margin: 0; animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
-  .hero .role { font: 400 clamp(1.25rem, 2.4vw, 1.75rem)/1.3 var(--display); color: var(--accent); margin: 1rem 0 0; animation: rise .7s .12s cubic-bezier(.2,.7,.2,1) both; }
-  @keyframes rise { from { opacity: 0; transform: translateY(.5em); } }
-  .hero .summary { max-width: 54ch; font-size: 1.15rem; color: var(--muted); margin: 2rem 0 2.25rem; }
-  .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
-  .btn { display: inline-block; padding: .8rem 1.3rem; border-radius: 999px; font: 600 1rem var(--display); text-decoration: none; border: 2px solid var(--ink); }
-  .btn.solid { background: var(--ink); color: var(--mist); }
-  .btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+      .hero {
+        padding-block: 5rem 5.5rem;
+      }
+      .hero h1 {
+        font: 800 clamp(2.6rem, 7vw, 5.5rem)/0.98 var(--display);
+        letter-spacing: -0.035em;
+        margin: 0;
+        animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      .hero .role {
+        font: 400 clamp(1.25rem, 2.4vw, 1.75rem)/1.3 var(--display);
+        color: var(--accent);
+        margin: 1rem 0 0;
+        animation: rise 0.7s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(0.5em);
+        }
+      }
+      .hero .summary {
+        max-width: 54ch;
+        font-size: 1.15rem;
+        color: var(--muted);
+        margin: 2rem 0 2.25rem;
+      }
+      .btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.3rem;
+        border-radius: 999px;
+        font: 600 1rem var(--display);
+        text-decoration: none;
+        border: 2px solid var(--ink);
+      }
+      .btn.solid {
+        background: var(--ink);
+        color: var(--mist);
+      }
+      .btn:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
 
-  section { padding-block: 4.5rem; border-top: 2px solid var(--ink); }
-  section h2 { font: 800 clamp(1.9rem, 4vw, 2.75rem)/1.05 var(--display); letter-spacing: -0.02em; margin: 0 0 .75rem; }
-  .lede { color: var(--muted); max-width: 56ch; margin: 0 0 3rem; }
+      section {
+        padding-block: 4.5rem;
+        border-top: 2px solid var(--ink);
+      }
+      section h2 {
+        font: 800 clamp(1.9rem, 4vw, 2.75rem)/1.05 var(--display);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.75rem;
+      }
+      .lede {
+        color: var(--muted);
+        max-width: 56ch;
+        margin: 0 0 3rem;
+      }
 
-  /* Experiencia y educación: línea de tiempo real */
-  .entry { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 2rem; padding-block: 1.75rem; border-top: 1px solid var(--arena); }
-  .entry:first-of-type { border-top: 0; padding-top: 0; }
-  .entry .when { color: var(--muted); margin: 0; }
-  .entry h3 { font: 600 1.3rem/1.2 var(--display); margin: 0; }
-  .entry .org { margin: .2rem 0 .75rem; color: var(--palma); font-weight: 700; }
-  .entry ul { margin: 0; padding-left: 1.1rem; max-width: 62ch; }
-  .entry li { margin-bottom: .35rem; }
+      /* Experiencia y educación: línea de tiempo real */
+      .entry {
+        display: grid;
+        grid-template-columns: 12rem minmax(0, 1fr);
+        gap: 2rem;
+        padding-block: 1.75rem;
+        border-top: 1px solid var(--arena);
+      }
+      .entry:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .entry .when {
+        color: var(--muted);
+        margin: 0;
+      }
+      .entry h3 {
+        font: 600 1.3rem/1.2 var(--display);
+        margin: 0;
+      }
+      .entry .org {
+        margin: 0.2rem 0 0.75rem;
+        color: var(--palma);
+        font-weight: 700;
+      }
+      .entry ul {
+        margin: 0;
+        padding-left: 1.1rem;
+        max-width: 62ch;
+      }
+      .entry li {
+        margin-bottom: 0.35rem;
+      }
 
-  /* Proyectos */
-  .project { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 2rem; padding-block: 2.25rem; border-top: 1px solid var(--arena); }
-  .project:first-of-type { border-top: 0; padding-top: 0; }
-  .project h3 { font: 600 clamp(1.35rem, 2.4vw, 1.75rem)/1.15 var(--display); letter-spacing: -0.015em; margin: 0 0 .4rem; }
-  .project .client { color: var(--muted); margin: 0; }
-  .project dl { margin: 0 0 1rem; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .5rem 1rem; max-width: 62ch; }
-  .project dt { font-weight: 700; color: var(--palma); }
-  .project dd { margin: 0; }
-  .tags { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 0; list-style: none; }
-  .tags li { font-size: .875rem; padding: .2rem .65rem; border-radius: 999px; background: var(--arena); }
+      /* Proyectos */
+      .project {
+        display: grid;
+        grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+        gap: 2rem;
+        padding-block: 2.25rem;
+        border-top: 1px solid var(--arena);
+      }
+      .project:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .project h3 {
+        font: 600 clamp(1.35rem, 2.4vw, 1.75rem)/1.15 var(--display);
+        letter-spacing: -0.015em;
+        margin: 0 0 0.4rem;
+      }
+      .project .client {
+        color: var(--muted);
+        margin: 0;
+      }
+      .project dl {
+        margin: 0 0 1rem;
+        display: grid;
+        grid-template-columns: 6.5rem minmax(0, 1fr);
+        gap: 0.5rem 1rem;
+        max-width: 62ch;
+      }
+      .project dt {
+        font-weight: 700;
+        color: var(--palma);
+      }
+      .project dd {
+        margin: 0;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .tags li {
+        font-size: 0.875rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        background: var(--arena);
+      }
 
-  /* Infraestructura */
-  .server { background: var(--palma); color: #F1F6F3; border-top-color: var(--palma); }
-  .server .lede { color: #CFE0D8; }
-  .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2rem 3rem; margin: 0; }
-  .stack div { border-left: 3px solid #9CC7B6; padding-left: 1rem; }
-  .stack dt { font: 600 1.15rem var(--display); margin-bottom: .25rem; }
-  .stack dd { margin: 0; color: #CFE0D8; }
+      /* Infraestructura */
+      .server {
+        background: var(--palma);
+        color: #f1f6f3;
+        border-top-color: var(--palma);
+      }
+      .server .lede {
+        color: #cfe0d8;
+      }
+      .stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        gap: 2rem 3rem;
+        margin: 0;
+      }
+      .stack div {
+        border-left: 3px solid #9cc7b6;
+        padding-left: 1rem;
+      }
+      .stack dt {
+        font: 600 1.15rem var(--display);
+        margin-bottom: 0.25rem;
+      }
+      .stack dd {
+        margin: 0;
+        color: #cfe0d8;
+      }
 
-  /* Habilidades */
-  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 2rem; }
-  .skills h3 { font: 600 1.1rem var(--display); margin: 0 0 .6rem; }
+      /* Habilidades */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 2rem;
+      }
+      .skills h3 {
+        font: 600 1.1rem var(--display);
+        margin: 0 0 0.6rem;
+      }
 
-  .contact h2 { max-width: 18ch; }
-  footer { padding-block: 2rem 3rem; color: var(--muted); font-size: .9rem; }
+      .contact h2 {
+        max-width: 18ch;
+      }
+      footer {
+        padding-block: 2rem 3rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
 
-  @media (max-width: 760px) {
-    .top nav { gap: 1rem; font-size: .95rem; }
-    .top nav .hide-sm { display: none; }
-    .hero { padding-block: 3rem 4rem; }
-    .entry, .project { grid-template-columns: 1fr; gap: .75rem; }
-    .project dl { grid-template-columns: 1fr; gap: .1rem; }
-    .project dd { margin-bottom: .6rem; }
-    section { padding-block: 3.5rem; }
-  }
-</style>
-</head>
-<body>
+      @media (max-width: 760px) {
+        .top nav {
+          gap: 1rem;
+          font-size: 0.95rem;
+        }
+        .top nav .hide-sm {
+          display: none;
+        }
+        .hero {
+          padding-block: 3rem 4rem;
+        }
+        .entry,
+        .project {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+        .project dl {
+          grid-template-columns: 1fr;
+          gap: 0.1rem;
+        }
+        .project dd {
+          margin-bottom: 0.6rem;
+        }
+        section {
+          padding-block: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap top">
+      <a class="mark" href="#">DSR</a>
+      <nav aria-label="Principal">
+        <a href="#experiencia" class="hide-sm">Experiencia</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades" class="hide-sm">Habilidades</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
 
-<header class="wrap top">
-  <a class="mark" href="#">DSR</a>
-  <nav aria-label="Principal">
-    <a href="#experiencia" class="hide-sm">Experiencia</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#habilidades" class="hide-sm">Habilidades</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
-
-<main>
-  <div class="wrap hero">
-    <h1>Diego A.<br>Santiago Rivera</h1>
-    <p class="role">Desarrollador de aplicaciones web y estudiante de Sistemas de Información</p>
-    <p class="summary">Diseño y desarrollo sistemas web a la medida para pequeños negocios en Puerto Rico: control de gastos, órdenes, citas e inventario. Me encargo del proyecto completo, desde entender el proceso del cliente hasta la base de datos, el despliegue y la infraestructura.</p>
-    <div class="btns">
-      <a class="btn solid" href="#proyectos">Ver proyectos</a>
-      <a class="btn" href="#contacto">Contactarme</a>
-      <!-- <a class="btn" href="resume.pdf">Descargar resume</a> -->
-    </div>
-  </div>
-
-  <section id="experiencia">
-    <div class="wrap">
-      <h2>Experiencia y educación</h2>
-      <p class="lede">Formación académica y experiencia en el sector público.</p>
-
-      <article class="entry">
-        <p class="when">MES AÑO – MES AÑO</p>
-        <div>
-          <h3>Pasante de Sistemas de Información</h3>
-          <p class="org">Autoridad de Edificios Públicos (AEP)</p>
-          <ul>
-            <li>Desarrollé una aplicación en Microsoft Power Apps para el inventario del equipo electrónico de la agencia.</li>
-            <li>Trabajé con el departamento de Sistemas de Información para reemplazar el registro manual del equipo.</li>
-          </ul>
+    <main>
+      <div class="wrap hero">
+        <h1>Diego A.<br />Santiago Rivera</h1>
+        <p class="role">
+          Desarrollador de aplicaciones web y estudiante de Sistemas de
+          Información
+        </p>
+        <p class="summary">
+          Diseño y desarrollo sistemas web a la medida para pequeños negocios en
+          Puerto Rico: control de gastos, órdenes, citas e inventario. Me
+          encargo del proyecto completo, desde entender el proceso del cliente
+          hasta la base de datos, el despliegue y la infraestructura.
+        </p>
+        <div class="btns">
+          <a class="btn solid" href="#proyectos">Ver proyectos</a>
+          <a class="btn" href="#contacto">Contactarme</a>
+          <!-- <a class="btn" href="resume.pdf">Descargar resume</a> -->
         </div>
-      </article>
-
-      <article class="entry">
-        <p class="when">AÑO – presente</p>
-        <div>
-          <h3>Desarrollador web independiente</h3>
-          <p class="org">Proyectos para clientes en Puerto Rico</p>
-          <ul>
-            <li>Desarrollo aplicaciones web a la medida para negocios de construcción, comida, belleza y cuidado de mascotas.</li>
-            <li>Administro la infraestructura donde corren: servidor Linux propio, contenedores Docker, bases de datos y dominios.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="entry">
-        <p class="when">AÑO – presente</p>
-        <div>
-          <h3>Sistemas de Información</h3>
-          <p class="org">Universidad Ana G. Méndez, recinto de Bayamón</p>
-          <ul>
-            <li>Charla invitada en la universidad sobre cómo la inteligencia artificial puede ayudar a jóvenes emprendedores y negocios en crecimiento.</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="proyectos">
-    <div class="wrap">
-      <h2>Proyectos</h2>
-      <p class="lede">Sistemas en uso por clientes reales, más un producto propio.</p>
-
-      <article class="project">
-        <div>
-          <h3>WS Global: gestión de gastos</h3>
-          <p class="client">Cliente: empresa de remodelación</p>
-        </div>
-        <div>
-          <dl>
-            <dt>Problema</dt><dd>Los recibos de gastos de cada trabajo se perdían o había que buscarlos a mano.</dd>
-            <dt>Solución</dt><dd>Aplicación web para registrar y consultar los recibos de la compañía, con la app y la API en subdominios separados.</dd>
-          </dl>
-          <ul class="tags"><li>Supabase</li><li>Docker</li><li>nginx</li><li>Dominio propio</li></ul>
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>Sistema de órdenes telefónicas</h3>
-          <p class="client">Cliente: negocio de comida</p>
-        </div>
-        <div>
-          <dl>
-            <dt>Problema</dt><dd>Las órdenes por teléfono se anotaban en papel y la cocina no tenía una vista clara de lo pendiente.</dd>
-            <dt>Solución</dt><dd>Captura de órdenes para empleados, pantalla de cocina y reporte de ventas del día. Se entrega con las cuentas y los datos a nombre del cliente.</dd>
-          </dl>
-          <ul class="tags"><li>Vercel</li><li>Supabase</li></ul>
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>Sistema de citas</h3>
-          <p class="client">Cliente: servicio de grooming de mascotas</p>
-        </div>
-        <div>
-          <dl>
-            <dt>Problema</dt><dd>Las citas se manejaban con mensajes sueltos y una libreta.</dd>
-            <dt>Solución</dt><dd>Agenda web con clientes y citas organizadas por día.</dd>
-          </dl>
-          <!-- Añade aquí las tecnologías: <ul class="tags"><li>...</li></ul> -->
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>CN Glam Studio</h3>
-          <p class="client">Cliente: estudio de uñas</p>
-        </div>
-        <div>
-          <dl>
-            <dt>Problema</dt><dd>El negocio dependía solo de Instagram para mostrar sus servicios.</dd>
-            <dt>Solución</dt><dd>Sitio web con servicios, trabajos realizados e información para reservar.</dd>
-          </dl>
-          <ul class="tags"><li>Netlify</li></ul>
-          <!-- <p><a href="https://TU-SITIO.netlify.app">Ver sitio</a></p> -->
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>Mi Historial Académico</h3>
-          <p class="client">Producto propio</p>
-        </div>
-        <div>
-          <dl>
-            <dt>Problema</dt><dd>Los estudiantes llevan su promedio y sus clases en hojas sueltas o de memoria.</dd>
-            <dt>Solución</dt><dd>App que calcula el promedio, organiza las clases por semestre con estado y profesor, y maneja recordatorios de exámenes y notas.</dd>
-          </dl>
-          <ul class="tags"><li>Supabase</li><li>Docker</li><li>Self-hosted</li></ul>
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>Inventario de equipo electrónico</h3>
-          <p class="client">Autoridad de Edificios Públicos, pasantía</p>
-        </div>
-        <div>
-          <dl>
-            <dt>Problema</dt><dd>El equipo electrónico de la agencia se registraba a mano.</dd>
-            <dt>Solución</dt><dd>Aplicación en Power Apps para registrar y consultar el inventario.</dd>
-          </dl>
-          <ul class="tags"><li>Power Apps</li></ul>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="infraestructura" class="server">
-    <div class="wrap">
-      <h2>Infraestructura propia</h2>
-      <p class="lede">Administro el servidor Linux donde corren la mayoría de mis aplicaciones, además de servicios para la red local.</p>
-      <dl class="stack">
-        <div><dt>Ubuntu Server</dt><dd>Servidor base con almacenamiento SSD dedicado a datos de contenedores.</dd></div>
-        <div><dt>Docker</dt><dd>Cada aplicación y servicio aislado en su propio contenedor.</dd></div>
-        <div><dt>Supabase self-hosted</dt><dd>Base de datos PostgreSQL, autenticación y API en instancias separadas por proyecto.</dd></div>
-        <div><dt>nginx</dt><dd>Proxy reverso para servir cada aplicación en su dominio.</dd></div>
-        <div><dt>Proxmox VE</dt><dd>Virtualización y contenedores LXC para servicios de red.</dd></div>
-        <div><dt>Pi-hole y Tailscale</dt><dd>DNS con filtrado para la red y acceso remoto seguro mediante VPN.</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section id="habilidades">
-    <div class="wrap">
-      <h2>Habilidades</h2>
-      <p class="lede">Herramientas que uso en proyectos reales.</p>
-      <div class="skills">
-        <div><h3>Desarrollo</h3><ul class="tags"><li>Aplicaciones web</li><li>Supabase</li><li>PostgreSQL</li><li>Power Apps</li></ul></div>
-        <div><h3>Despliegue</h3><ul class="tags"><li>Vercel</li><li>Netlify</li><li>Dominios y DNS</li></ul></div>
-        <div><h3>Infraestructura</h3><ul class="tags"><li>Linux</li><li>Docker</li><li>nginx</li><li>Proxmox</li><li>Redes</li></ul></div>
-        <div><h3>Otras</h3><ul class="tags"><li>Levantamiento de requisitos</li><li>Herramientas de IA</li><li>Presentaciones</li></ul></div>
       </div>
-    </div>
-  </section>
 
-  <section id="contacto" class="contact">
-    <div class="wrap">
-      <h2>¿Buscas un desarrollador o tienes un proyecto?</h2>
-      <p class="lede">Estoy disponible para pasantías, empleos a tiempo parcial y proyectos para negocios.</p>
-      <div class="btns">
-        <a class="btn solid" href="mailto:TU-CORREO@ejemplo.com">Enviar correo</a>
-        <a class="btn" href="https://www.linkedin.com/in/TU-PERFIL">LinkedIn</a>
-        <a class="btn" href="https://github.com/TU-USUARIO">GitHub</a>
-      </div>
-    </div>
-  </section>
-</main>
+      <section id="experiencia">
+        <div class="wrap">
+          <h2>Experiencia y educación</h2>
+          <p class="lede">
+            Formación académica y experiencia en el sector público.
+          </p>
 
-<footer class="wrap">Diego A. Santiago Rivera, Toa Baja, Puerto Rico.</footer>
+          <article class="entry">
+            <p class="when">MES AÑO – MES AÑO</p>
+            <div>
+              <h3>Pasante de Sistemas de Información</h3>
+              <p class="org">Autoridad de Edificios Públicos (AEP)</p>
+              <ul>
+                <li>
+                  Desarrollé una aplicación en Microsoft Power Apps para el
+                  inventario del equipo electrónico de la agencia.
+                </li>
+                <li>
+                  Trabajé con el departamento de Sistemas de Información para
+                  reemplazar el registro manual del equipo.
+                </li>
+              </ul>
+            </div>
+          </article>
 
-</body>
+          <article class="entry">
+            <p class="when">AÑO – presente</p>
+            <div>
+              <h3>Desarrollador web independiente</h3>
+              <p class="org">Proyectos para clientes en Puerto Rico</p>
+              <ul>
+                <li>
+                  Desarrollo aplicaciones web a la medida para negocios de
+                  construcción, comida, belleza y cuidado de mascotas.
+                </li>
+                <li>
+                  Administro la infraestructura donde corren: servidor Linux
+                  propio, contenedores Docker, bases de datos y dominios.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry">
+            <p class="when">AÑO – presente</p>
+            <div>
+              <h3>Sistemas de Información</h3>
+              <p class="org">Universidad Ana G. Méndez, recinto de Bayamón</p>
+              <ul>
+                <li>
+                  Charla invitada en la universidad sobre cómo la inteligencia
+                  artificial puede ayudar a jóvenes emprendedores y negocios en
+                  crecimiento.
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <div class="wrap">
+          <h2>Proyectos</h2>
+          <p class="lede">
+            Sistemas en uso por clientes reales, más un producto propio.
+          </p>
+
+          <article class="project">
+            <div>
+              <h3>WS Global: gestión de gastos</h3>
+              <p class="client">Cliente: empresa de remodelación</p>
+            </div>
+            <div>
+              <dl>
+                <dt>Problema</dt>
+                <dd>
+                  Los recibos de gastos de cada trabajo se perdían o había que
+                  buscarlos a mano.
+                </dd>
+                <dt>Solución</dt>
+                <dd>
+                  Aplicación web para registrar y consultar los recibos de la
+                  compañía, con la app y la API en subdominios separados.
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>Supabase</li>
+                <li>Docker</li>
+                <li>nginx</li>
+                <li>Dominio propio</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Sistema de órdenes telefónicas</h3>
+              <p class="client">Cliente: negocio de comida</p>
+            </div>
+            <div>
+              <dl>
+                <dt>Problema</dt>
+                <dd>
+                  Las órdenes por teléfono se anotaban en papel y la cocina no
+                  tenía una vista clara de lo pendiente.
+                </dd>
+                <dt>Solución</dt>
+                <dd>
+                  Captura de órdenes para empleados, pantalla de cocina y
+                  reporte de ventas del día. Se entrega con las cuentas y los
+                  datos a nombre del cliente.
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>Vercel</li>
+                <li>Supabase</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Sistema de citas</h3>
+              <p class="client">Cliente: servicio de grooming de mascotas</p>
+            </div>
+            <div>
+              <dl>
+                <dt>Problema</dt>
+                <dd>
+                  Las citas se manejaban con mensajes sueltos y una libreta.
+                </dd>
+                <dt>Solución</dt>
+                <dd>Agenda web con clientes y citas organizadas por día.</dd>
+              </dl>
+              <!-- Añade aquí las tecnologías: <ul class="tags"><li>...</li></ul> -->
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>CN Glam Studio</h3>
+              <p class="client">Cliente: estudio de uñas</p>
+            </div>
+            <div>
+              <dl>
+                <dt>Problema</dt>
+                <dd>
+                  El negocio dependía solo de Instagram para mostrar sus
+                  servicios.
+                </dd>
+                <dt>Solución</dt>
+                <dd>
+                  Sitio web con servicios, trabajos realizados e información
+                  para reservar.
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>Netlify</li>
+              </ul>
+              <!-- <p><a href="https://TU-SITIO.netlify.app">Ver sitio</a></p> -->
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Mi Historial Académico</h3>
+              <p class="client">Producto propio</p>
+            </div>
+            <div>
+              <dl>
+                <dt>Problema</dt>
+                <dd>
+                  Los estudiantes llevan su promedio y sus clases en hojas
+                  sueltas o de memoria.
+                </dd>
+                <dt>Solución</dt>
+                <dd>
+                  App que calcula el promedio, organiza las clases por semestre
+                  con estado y profesor, y maneja recordatorios de exámenes y
+                  notas.
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>Supabase</li>
+                <li>Docker</li>
+                <li>Self-hosted</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Inventario de equipo electrónico</h3>
+              <p class="client">Autoridad de Edificios Públicos, pasantía</p>
+            </div>
+            <div>
+              <dl>
+                <dt>Problema</dt>
+                <dd>
+                  El equipo electrónico de la agencia se registraba a mano.
+                </dd>
+                <dt>Solución</dt>
+                <dd>
+                  Aplicación en Power Apps para registrar y consultar el
+                  inventario.
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>Power Apps</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="infraestructura" class="server">
+        <div class="wrap">
+          <h2>Infraestructura propia</h2>
+          <p class="lede">
+            Administro el servidor Linux donde corren la mayoría de mis
+            aplicaciones, además de servicios para la red local.
+          </p>
+          <dl class="stack">
+            <div>
+              <dt>Ubuntu Server</dt>
+              <dd>
+                Servidor base con almacenamiento SSD dedicado a datos de
+                contenedores.
+              </dd>
+            </div>
+            <div>
+              <dt>Docker</dt>
+              <dd>
+                Cada aplicación y servicio aislado en su propio contenedor.
+              </dd>
+            </div>
+            <div>
+              <dt>Supabase self-hosted</dt>
+              <dd>
+                Base de datos PostgreSQL, autenticación y API en instancias
+                separadas por proyecto.
+              </dd>
+            </div>
+            <div>
+              <dt>nginx</dt>
+              <dd>Proxy reverso para servir cada aplicación en su dominio.</dd>
+            </div>
+            <div>
+              <dt>Proxmox VE</dt>
+              <dd>Virtualización y contenedores LXC para servicios de red.</dd>
+            </div>
+            <div>
+              <dt>Pi-hole y Tailscale</dt>
+              <dd>
+                DNS con filtrado para la red y acceso remoto seguro mediante
+                VPN.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <div class="wrap">
+          <h2>Habilidades</h2>
+          <p class="lede">Herramientas que uso en proyectos reales.</p>
+          <div class="skills">
+            <div>
+              <h3>Desarrollo</h3>
+              <ul class="tags">
+                <li>Aplicaciones web</li>
+                <li>Supabase</li>
+                <li>PostgreSQL</li>
+                <li>Power Apps</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Despliegue</h3>
+              <ul class="tags">
+                <li>Vercel</li>
+                <li>Netlify</li>
+                <li>Dominios y DNS</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Infraestructura</h3>
+              <ul class="tags">
+                <li>Linux</li>
+                <li>Docker</li>
+                <li>nginx</li>
+                <li>Proxmox</li>
+                <li>Redes</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Otras</h3>
+              <ul class="tags">
+                <li>Levantamiento de requisitos</li>
+                <li>Herramientas de IA</li>
+                <li>Presentaciones</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="contact">
+        <div class="wrap">
+          <h2>¿Buscas un desarrollador o tienes un proyecto?</h2>
+          <p class="lede">
+            Estoy disponible para pasantías, empleos a tiempo parcial y
+            proyectos para negocios.
+          </p>
+          <div class="btns">
+            <a class="btn solid" href="mailto:diego.apps.santiago@outlook.com"
+              >Enviar correo</a
+            >
+            <a class="btn" href="https://www.linkedin.com/in/TU-PERFIL"
+              >LinkedIn</a
+            >
+            <a class="btn" href="https://github.com/TU-USUARIO">GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      Diego A. Santiago Rivera, Toa Baja, Puerto Rico.
+    </footer>
+  </body>
 </html>
